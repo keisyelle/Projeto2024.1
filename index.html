@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ - O QUE EU APRENDI COM O ALURA!</title>
+
+<script>
+  alert("BEM VINDO AO QUIZ - O QUE EU APRENDI COM O ALURA!")
+  alert("O quiz é bem simples de jogar :D\n\nDepois de ler a pergunta com atenção, selecione a alternativa, e logo aparecerá se acertou ou errou, aí é só clicar em Próxima Pergunta.\n\nApós finalizar o teste, será contabilizado o total de pontos.")
+</script>
+
+<style>
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+    
+button {
+    cursor: pointer;
+    
+}
+
+body {
+    background-color: #ffffff;
+    color: #000000;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+#quiz-container {
+    background-color: #24E5FF;
+    width: 90%;
+    max-width: 800px;
+    font-family: 'sans-serif';
+    font-weight: bold;
+    
+    border: 2px solid #ffffff;
+    border-radius: 6px;
+    padding: 6px;
+    box-shadow: 0 0 2px 2px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#question {
+    
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-family: Tahoma;
+}
+
+#options-container {
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 26px;
+    font-family: Tahoma;
+}
+
+.option {
+    display: flex;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #ddd;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#score {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>QUIZ - O QUE EU APRENDI COM O ALURA!</h1>
+        <br>
+        <br>
+        <div id="question-container">
+            <p id="question">Pergunta 1: Qual é a cor da maçã?</p>
+            <div id="options-container">
+                <button class="option">A) Rosa</button>
+                <button class="option">B) Azul</button>
+                <button class="option">C) Vermelha</button>
+            </div>
+        </div>
+        <button id="submit-btn">Próxima Pergunta</button>
+        <p id="score">Pontuação: 0</p>
+    </div>
+
+<script> 
+    const questions = [
+    {
+        question: "Dentro de qual elemento HTML colocamos o JavaScript?",
+        options: ["<javascript>", "<js>", "<script>"],
+        answer: "<script>"
+    },
+    {
+        question: "O arquivo JavaScript externo deve conter a tag <script>?",
+        options: ["Verdadeiro", "Falso", "Depende"],
+        answer: "Falso"
+    },
+    {
+        question: "Qual comando pode ser utilizado para testar a conectividade entre dois computadores em uma rede e verificar se eles são capazes de trocar dados entre si?",
+        options: ["ipconfig", "hostname", "ping"],
+        answer: "ping"
+    },
+    {
+        question: "Qual é o protocolo utilizado para transferência de arquivos em redes de computadores?",
+        options: ["FTP", "HTTP", "SMTP"],
+        answer: "FTP"
+    },
+    {
+        question: "Qual comando que analisa e manipula linhas de texto em sistemas Unix e Linux, aplicando padrões e ações especificadas pelo usuário?",
+        options: ["grep", "sed", "awk"],
+        answer: "awk"
+    },
+];
+
+
+let currentQuestion = 0;
+let score = 0;
+
+const questionElement = document.getElementById("question");
+const optionsContainer = document.getElementById("options-container");
+const scoreElement = document.getElementById("score");
+
+function showQuestion() {
+    const current = questions[currentQuestion];
+    questionElement.textContent = `${current.question}`;
+    optionsContainer.innerHTML = "";
+    current.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.classList.add("option");
+        button.textContent = `${String.fromCharCode(65 + index)}) ${option}`;
+        button.addEventListener("click", () => {
+            checkAnswer(option);
+        });
+        optionsContainer.appendChild(button);
+    });
+}
+
+function checkAnswer(answer) {
+    if (answer === questions[currentQuestion].answer) {
+        score++;
+    }
+    scoreElement.textContent = `Pontuação: ${score}`;
+}
+
+document.getElementById("submit-btn").addEventListener("click", () => {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+        showQuestion();
+    } else {
+        alert(`Quiz concluído! Sua pontuação final é ${score}`);
+    }
+});
+
+showQuestion();
+</script>
+</body>
+</html>
