@@ -21,7 +21,7 @@ Este projeto consiste em um quiz de perguntas e respostas sobre programação. O
 
 ## Status do Projeto
 
-![Badge em Desenvolvimento](http://img.shields.io/static/v1?label=STATUS&message=EM%20DESENVOLVIMENTO&color=GREEN&style=for-the-badge)
+![Badge finalizado](https://img.shields.io/badge/status-FINALIZADO-green)
 
 ## Funcionalidades e Demonstração da Aplicação
 
