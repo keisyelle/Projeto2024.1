@@ -53,7 +53,7 @@ O projeto está disponível no seguinte repositório do GitHub: [link para o rep
 
 ## Pessoas Contribuidoras
 
-- [Nome da Pessoa Contribuidora](https://github.com/seu-usuario)
+- Helena Bastos
 
 ## Autora
 
